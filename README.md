@@ -3,18 +3,15 @@
 ## What is MakeMyDocsBot?
 
 **MakeMyDocsBot** is a smart documentation synchronization bot designed to help maintainers keep multi-language documentation up-to-date across feature branches.  
-Built using **crewAI**, it automates the process of detecting documentation changes in English and synchronizing them into other supported languages — currently **Korean** and **Portuguese (Brazil)**.
+Built using **crewAI**, for crewai (currently) it automates the process of detecting documentation changes in English and synchronizing them into other supported languages — currently **Korean** and **Portuguese (Brazil)**.
 
 The bot fits seamlessly into your workflow, ensuring that new features stay consistently documented across all supported locales — reducing manual overhead and improving release quality.
 
 ### 🎥 Overview Video  
 See how MakeMyDocsBot works, how it fits into the ecosystem, and the agents & tasks that power it.
 
-<div style="position: relative; padding-bottom: 64.98194945848375%; height: 0;"><iframe src="https://www.loom.com/embed/a695e79df202473ab5acd3c6f6f8c585" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+[![Architecture Overview](images/Architecure-image.png)](https://www.loom.com/share/a695e79df202473ab5acd3c6f6f8c585)
 
-[▶️ Watch on Loom](https://www.loom.com/share/a695e79df202473ab5acd3c6f6f8c585)
-
-<video src="demo-overview.mp4" controls width="800"></video>  
 *MakeMyDocsBot — Overview & Architecture*
 
 ---
