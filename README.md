@@ -1,5 +1,25 @@
 # MakeMyDocsBot
 
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ ███╗   ███╗ █████╗ ██╗  ██╗███████╗    ███╗   ███╗██╗   ██╗
+ ████╗ ████║██╔══██╗██║ ██╔╝██╔════╝    ████╗ ████║╚██╗ ██╔╝
+ ██╔████╔██║███████║█████╔╝ █████╗      ██╔████╔██║ ╚████╔╝ 
+ ██║╚██╔╝██║██╔══██║██╔═██╗ ██╔══╝      ██║╚██╔╝██║  ╚██╔╝  
+ ██║ ╚═╝ ██║██║  ██║██║  ██╗███████╗    ██║ ╚═╝ ██║   ██║   
+ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝   ╚═╝   
+                                                              
+ ██████╗  ██████╗  ██████╗███████╗    ██████╗  ██████╗ ████████╗
+ ██╔══██╗██╔═══██╗██╔════╝██╔════╝    ██╔══██╗██╔═══██╗╚══██╔══╝
+ ██║  ██║██║   ██║██║     ███████╗    ██████╔╝██║   ██║   ██║   
+ ██║  ██║██║   ██║██║     ╚════██║    ██╔══██╗██║   ██║   ██║   
+ ██████╔╝╚██████╔╝╚██████╗███████║    ██████╔╝╚██████╔╝   ██║   
+ ╚═════╝  ╚═════╝  ╚═════╝╚══════╝    ╚═════╝  ╚═════╝    ╚═╝   
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
 ## What is MakeMyDocsBot?
 
 **MakeMyDocsBot** is a smart documentation synchronization bot designed to help maintainers keep multi-language documentation up-to-date across feature branches.  
@@ -11,73 +31,94 @@ The bot fits seamlessly into your workflow, ensuring that new features stay cons
 See how MakeMyDocsBot works, how it fits into the ecosystem, and the agents & tasks that power it.
 
 [![Architecture Overview](images/preview_video_1.png)](https://www.loom.com/share/a695e79df202473ab5acd3c6f6f8c585)
+
+*MakeMyDocsBot — Overview & Architecture*
 ![AMP Platform](images/amp_platform.png)  
 
 
-*MakeMyDocsBot — Overview & Architecture*
+---
+---
+
+## DEMO
+
+### DEMO #1 — PR->https://github.com/crewAIInc/crewAI/pull/3729
+
+[![Demo 1](images/demo-1.png)](https://www.loom.com/share/61dd4f5fce544beaa565df6c0bd58517)
 
 ---
 
-## DEMO #1 — English → Korean Synchronization
+### DEMO #2 — PR->https://github.com/crewAIInc/crewAI/pull/3584
 
-This demo showcases MakeMyDocsBot automatically translating and synchronizing English documentation updates into **Korean**.  
-It detects new feature branch changes, processes updates, and creates PRs with localized content — all autonomously.
-
-[![Watch Demo 1](https://cdn.loom.com/sessions/thumbnails/demo1-placeholder.jpg)](https://www.loom.com/share/demo1)  
-*Demo #1: English → Korean Documentation Sync*
+[![Demo 2](images/demo-2.png)](https://drive.google.com/file/d/17HElOx9ej-bdLOSlKrxBwimE65QiTxAw/view?usp=sharing)
 
 ---
-
-## DEMO #2 — English → Portuguese (Brazil) Synchronization
-
-This demo highlights the synchronization flow for **Portuguese (Brazil)** documentation.  
-The bot detects new commits in feature branches, processes English doc updates, and pushes the translated changes automatically.
-
-[![Watch Demo 2](https://cdn.loom.com/sessions/thumbnails/demo2-placeholder.jpg)](https://www.loom.com/share/demo2)  
-*Demo #2: English → Portuguese (Brazil) Documentation Sync*
-
 ---
+
 
 ## Installation
 
-Before you begin, ensure you have **Python >=3.10 <3.14** installed.
+### Create and Activate a Virtual Environment
 
-### 1. Install [UV](https://docs.astral.sh/uv/)
+Use your installed Python version (e.g., Python 3.12):
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+```
+
+### Install [UV](https://docs.astral.sh/uv/)
+
+Install `uv` inside your virtual environment:
+
 ```bash
 pip install uv
 ```
 
-### 2. Sync Dependencies
+### Cloning the repository 
+
+Fork this repository and clone it locally
+```bash
+git clone <clone-repo-name>
+```
+
+### Sync Dependencies
+
 In your project root:
+
 ```bash
 uv sync
 ```
-Alternatively:
-```bash
-crewai install
-```
 
-> Dependencies are defined in `pyproject.toml` and locked via `uv.lock` for reproducibility.
+This command:
+- Reads dependencies from your `pyproject.toml` (and optionally `uv.lock`)
+- Installs the exact versions specified
+- Ensures consistency between environments
 
-### 3. Add Environment Variables
-Create a `.env` file in your project root:
+### Add the .env file in the cloned repository
+Add the .env file with `OPENAI_API_KEY` and `OPENAI_MODEL_NAME`
+
 ```bash
-OPENAI_API_KEY=your_api_key_here
-OPENAI_MODEL_NAME=gpt-4o-mini
+OPENAI_API_KEY
+OPENAI_MODEL_NAME
 ```
 
 ---
 
 ## Running the Project
 
-To launch MakeMyDocsBot and start synchronizing multilingual documentation:
+We need to add the github hook pre-push script with which, whenever you try to push any feature branch, the pre-push script asks you to run the MAKE_MY_DOCS_BOT or not.
+
+Make sure you are inside the crewAI repository and then run the following commands
 
 ```bash
-crewai run
+cd .git/hooks
+touch pre-push
 ```
 
-This command initializes the MakeMyDocsBot crew, activates its agents, and begins the documentation synchronization process as defined in your configuration files.
+Copy the entire content in the [pre-push-script](https://github.com/Vidit-Ostwal/MAKE_MY_DOCS_BOT/blob/main/pre-push-script) and paste that as it is in pre-push script.
+
+Move the entire MAKE_MY_DOCS_BOT inside the CrewAI repository.
+This is how it should look after moving it to CrewAI repository.
 
 ---
 
-✨ *Empowering maintainers to focus on innovation — while MakeMyDocsBot keeps your documentation perfectly in sync.*
